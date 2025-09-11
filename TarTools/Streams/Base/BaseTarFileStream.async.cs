@@ -5,7 +5,7 @@ namespace TarTools.Streams.Base;
 
 
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-public partial class BaseTarFileStream : IAsyncDisposable
+public partial class  BaseTarFileStream: IAsyncDisposable
 {
     public async ValueTask DisposeAsync()
     {
