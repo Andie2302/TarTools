@@ -1,26 +1,40 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace TarTools.Streams.Base;
-
-
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-public partial class  BaseTarFileStream: IAsyncDisposable
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+namespace TarTools.Streams.Base
 {
-    public async ValueTask DisposeAsync()
+    public partial class BaseTarFileStream : IAsyncDisposable
     {
-        if (!_disposed)
+        public async ValueTask DisposeAsync()
         {
-            if (!leaveStreamOpen)
+            if (!_disposed)
             {
-                if (_stream is IAsyncDisposable asyncDisposable)
-                    await asyncDisposable.DisposeAsync();
-                else
-                    _stream.Dispose();
+                if (!leaveStreamOpen)
+                {
+                    if (_stream is IAsyncDisposable asyncDisposable)
+                        await asyncDisposable.DisposeAsync();
+                    else
+                        _stream.Dispose();
+                }
+                _disposed = true;
             }
-            _disposed = true;
+            GC.SuppressFinalize(this);
         }
-        GC.SuppressFinalize(this);
+
+        // Memory<T> Support für async Operationen
+        public ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
+        {
+            ThrowIfDisposed();
+            return _stream.ReadAsync(buffer, cancellationToken);
+        }
+
+        public ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
+        {
+            ThrowIfDisposed();
+            return _stream.WriteAsync(buffer, cancellationToken);
+        }
     }
 }
 #endif
