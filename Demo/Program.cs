@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System;
-using System.Formats.Tar;
+using System.IO;
 using TarTools.Streams;
 
 Console.WriteLine("Hello, World!");
