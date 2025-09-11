@@ -16,7 +16,7 @@ namespace TarTools.Streams.Base
                     if (_stream is IAsyncDisposable asyncDisposable)
                         await asyncDisposable.DisposeAsync();
                     else
-                        _stream.Dispose();
+                        await _stream.DisposeAsync();
                 }
                 _disposed = true;
             }
