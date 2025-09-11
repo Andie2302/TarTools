@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarTools", "TarTools\TarTools.csproj", "{49FE5A07-231E-400C-BF2F-A0C42ED9F2BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{0C67683A-2121-439B-87B0-E6A1E2D2147B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49FE5A07-231E-400C-BF2F-A0C42ED9F2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49FE5A07-231E-400C-BF2F-A0C42ED9F2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49FE5A07-231E-400C-BF2F-A0C42ED9F2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49FE5A07-231E-400C-BF2F-A0C42ED9F2BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C67683A-2121-439B-87B0-E6A1E2D2147B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C67683A-2121-439B-87B0-E6A1E2D2147B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C67683A-2121-439B-87B0-E6A1E2D2147B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C67683A-2121-439B-87B0-E6A1E2D2147B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
