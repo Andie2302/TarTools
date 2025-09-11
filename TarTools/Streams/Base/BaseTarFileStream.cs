@@ -10,7 +10,7 @@ public partial class BaseTarFileStream(Stream? stream, bool leaveStreamOpen = fa
     private readonly Stream _stream = stream ?? throw new ArgumentNullException(nameof(stream));
     private bool _disposed;
 
-    
+
     // Dispose Pattern
     protected virtual void Dispose(bool disposing)
     {
