@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace TarTools.Streams.Base;
 
+[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 public partial class BaseTarFileStream(Stream? stream, bool leaveStreamOpen = false) : IDisposable
 {
     private readonly Stream _stream = stream ?? throw new ArgumentNullException(nameof(stream));
@@ -16,7 +18,7 @@ public partial class BaseTarFileStream(Stream? stream, bool leaveStreamOpen = fa
     {
         if (_disposed || !disposing) return;
         if (!leaveStreamOpen) 
-            _stream?.Dispose();
+            _stream.Dispose();
         _disposed = true;
     }
 
@@ -32,8 +34,8 @@ public partial class BaseTarFileStream(Stream? stream, bool leaveStreamOpen = fa
     // Disposed Check
     private void ThrowIfDisposed()
     {
-        if (_disposed)
-            throw new ObjectDisposedException(nameof(BaseTarFileStream));
+        if (!_disposed) return;
+        throw new ObjectDisposedException(nameof(BaseTarFileStream));
     }
 
     
